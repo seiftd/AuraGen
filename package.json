@@ -1,0 +1,41 @@
+{
+  "name": "auragen-ai",
+  "version": "1.0.0",
+  "description": "All-in-One Content Creation Suite - AI-powered images, voiceovers, and video creation",
+  "private": true,
+  "workspaces": [
+    "packages/mobile",
+    "packages/backend",
+    "packages/admin-dashboard",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:admin\"",
+    "dev:backend": "npm run dev --workspace=packages/backend",
+    "dev:admin": "npm run dev --workspace=packages/admin-dashboard",
+    "dev:mobile": "npm run dev --workspace=packages/mobile",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "install:all": "npm install && npm install --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "ai",
+    "content-creation",
+    "image-generation",
+    "voice-synthesis",
+    "video-editing",
+    "mobile-app",
+    "react-native"
+  ],
+  "author": "AuraGen AI Team",
+  "license": "MIT"
+}

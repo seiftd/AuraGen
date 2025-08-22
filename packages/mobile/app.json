@@ -1,0 +1,90 @@
+{
+  "expo": {
+    "name": "AuraGen AI",
+    "slug": "auragen-ai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#6366f1"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.auragen.ai",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app needs access to the camera to capture photos for content creation.",
+        "NSMicrophoneUsageDescription": "This app needs access to the microphone to record audio for voice synthesis.",
+        "NSPhotoLibraryUsageDescription": "This app needs access to your photo library to save and share your created content.",
+        "NSContactsUsageDescription": "This app needs access to contacts for sharing features."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#6366f1"
+      },
+      "package": "com.auragen.ai",
+      "versionCode": 1,
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "INTERNET",
+        "ACCESS_NETWORK_STATE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow AuraGen AI to access your camera to capture photos for content creation."
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Allow AuraGen AI to access your photos to save and share your created content.",
+          "savePhotosPermission": "Allow AuraGen AI to save photos to your device.",
+          "isAccessMediaLocationEnabled": true
+        }
+      ],
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow AuraGen AI to access your microphone to record audio for voice synthesis."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#6366f1",
+          "defaultChannel": "default"
+        }
+      ]
+    ],
+    "scheme": "auragen",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "auragen-ai-project-id"
+      }
+    },
+    "owner": "auragen-team"
+  }
+}
