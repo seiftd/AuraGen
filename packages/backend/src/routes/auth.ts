@@ -1,34 +1,24 @@
 import { Router } from 'express';
+import AuthController from '@/controllers/authController';
+import { authenticate, optionalAuth } from '@/middleware/auth';
 
 const router = Router();
 
-// Authentication routes will be implemented here
-router.post('/register', (req, res) => {
-  res.json({ message: 'Register endpoint - to be implemented' });
-});
+// Public routes
+router.post('/register', AuthController.validateRegister, AuthController.register);
+router.post('/login', AuthController.validateLogin, AuthController.login);
+router.post('/refresh', AuthController.refreshToken);
+router.post('/forgot-password', AuthController.validateForgotPassword, AuthController.forgotPassword);
+router.post('/reset-password', AuthController.validateResetPassword, AuthController.resetPassword);
+router.get('/verify-email', AuthController.verifyEmail);
+router.post('/resend-verification', AuthController.resendVerificationEmail);
 
-router.post('/login', (req, res) => {
-  res.json({ message: 'Login endpoint - to be implemented' });
-});
+// Protected routes
+router.post('/logout', authenticate, AuthController.logout);
+router.get('/profile', authenticate, AuthController.getProfile);
+router.post('/change-password', authenticate, AuthController.validateChangePassword, AuthController.changePassword);
 
-router.post('/logout', (req, res) => {
-  res.json({ message: 'Logout endpoint - to be implemented' });
-});
-
-router.post('/refresh', (req, res) => {
-  res.json({ message: 'Refresh token endpoint - to be implemented' });
-});
-
-router.post('/forgot-password', (req, res) => {
-  res.json({ message: 'Forgot password endpoint - to be implemented' });
-});
-
-router.post('/reset-password', (req, res) => {
-  res.json({ message: 'Reset password endpoint - to be implemented' });
-});
-
-router.post('/verify-email', (req, res) => {
-  res.json({ message: 'Verify email endpoint - to be implemented' });
-});
+// Optional auth route (can be called with or without token)
+router.get('/check', optionalAuth, AuthController.checkAuth);
 
 export default router;
